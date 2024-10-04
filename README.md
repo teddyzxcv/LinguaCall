@@ -1,4 +1,16 @@
 # LinguaCall
+
+## Project development guideline:
+### Use trunk based development
+- for each ticket create a new branch from the lastest master branch
+- do changes
+- upload the changes and submit the pull request 
+- review the pull request (optional)
+- merge to the master
+### Release cycle 
+- each week have a iteration, do debuging and testing on this version
+- first two weeks focus on development and prepare the first interation of product
+
 ## Documents
 1. SRS: https://docs.google.com/document/d/1f60xH0MGMIxRZms5EgG1wEjzKnhj7M0bogvWEMVgrGk/edit
 
