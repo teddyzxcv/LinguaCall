@@ -66,6 +66,7 @@ struct LoginView: View {
                     }
                 }
                 .padding()
+                .ignoresSafeArea(.keyboard)
 
                 NavigationLink(
                     destination: ChatScreenView(viewModel: ChatViewModel(user: User(name: email)))
@@ -100,8 +101,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
 
                 NavigationLink(
-                    destination: RegistrationView(settings: settings)
-                        .navigationBarBackButtonHidden(true),
+                    destination: RegistrationView(settings: settings),
                     isActive: $isRegister
                 ) {
                     Button(
@@ -124,7 +124,7 @@ struct LoginView: View {
                     .padding(.top, 20)
             }
             .padding()
-        }
+        }.ignoresSafeArea(.all)
     }
 
     // Handle Auth Errors

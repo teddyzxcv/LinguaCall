@@ -67,6 +67,7 @@ struct RegistrationView: View {
                     }
                 }
                 .padding()
+                .ignoresSafeArea(.keyboard)
 
                 NavigationLink(
                     destination: ChatScreenView(viewModel: ChatViewModel(user: User(name: email)))
@@ -101,7 +102,7 @@ struct RegistrationView: View {
                     .padding(.top, 20)
             }
             .padding()
-        }
+        }.ignoresSafeArea(.all)
     }
 
     // Handle Auth Errors
@@ -129,3 +130,25 @@ struct RegistrationView_Previews: PreviewProvider {
             .previewDevice("iPhone 11 Pro")
     }
 }
+
+struct KeyboardAdaptive: ViewModifier {
+    @State private var keyboardHeight: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        content
+            .padding(.bottom, keyboardHeight)
+            .onAppear {
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                    if let userInfo = notification.userInfo,
+                       let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                        self.keyboardHeight = keyboardFrame.height
+                    }
+                }
+
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                    self.keyboardHeight = 0
+                }
+            }
+    }
+}
+
