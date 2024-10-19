@@ -5,6 +5,8 @@ struct RegistrationView: View {
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @State private var registrationStatus: String = ""
+    @State private var isRegistered = false
+    @State private var isLogin = false
     @ObservedObject var settings: DebugSettings
 
     private var authService: AuthService
@@ -66,25 +68,33 @@ struct RegistrationView: View {
                 }
                 .padding()
 
-                Button(action: {
-                    authService.registerUser(login: email, password: password) { result in
-                        switch result {
-                        case .success(let user):
-                            registrationStatus = "Registration successful! User ID: \(user.id)"
-                        case .failure(let error):
-                            registrationStatus = handleAuthError(error)
+                NavigationLink(
+                    destination: ChatScreenView(viewModel: ChatViewModel(user: User(name: email)))
+                        .navigationBarBackButtonHidden(true),
+                    isActive: $isRegistered
+                ) {
+                    Button(action: {
+                        authService.registerUser(login: email, password: password) { result in
+                            switch result {
+                            case .success(let user):
+                                email = user.login
+                                registrationStatus = "Registration successful!"
+                                isRegistered = true
+                            case .failure(let error):
+                                registrationStatus = handleAuthError(error)
+                            }
                         }
+                    }) {
+                        Text("Sign up")
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .cornerRadius(8)
                     }
-                }) {
-                    Text("Sign up")
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .cornerRadius(8)
+                    .padding(.top, 30)
                 }
-                .padding(.top, 30)
 
                 Text(registrationStatus)
                     .foregroundColor(.white)

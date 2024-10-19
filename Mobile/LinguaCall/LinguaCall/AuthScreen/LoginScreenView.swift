@@ -5,6 +5,8 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
     @State private var loginStatus: String = ""
+    @State private var isRegister: Bool = false
+    @State private var isLogin: Bool = false
     @ObservedObject var settings: DebugSettings
     private var authService: AuthService
 
@@ -19,7 +21,7 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 20) {
-                Text("Login")
+                Text("Welcome Back")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -65,25 +67,57 @@ struct LoginView: View {
                 }
                 .padding()
 
-                Button(action: {
-                    authService.loginUser(login: email, password: password) { result in
-                        switch result {
-                        case .success(let message):
-                            loginStatus = message
-                        case .failure(let error):
-                            loginStatus = handleAuthError(error)
+                NavigationLink(
+                    destination: ChatScreenView(viewModel: ChatViewModel(user: User(name: email)))
+                        .navigationBarBackButtonHidden(true),
+                    isActive: $isLogin
+                ) {
+                    Button(action: {
+                        authService.loginUser(login: email, password: password) { result in
+                            switch result {
+                            case .success(let message):
+                                loginStatus = message
+                                isLogin = true
+                            case .failure(let error):
+                                loginStatus = handleAuthError(error)
+                            }
                         }
+                    }) {
+                        Text("Sign in")
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .cornerRadius(8)
                     }
-                }) {
-                    Text("Log in")
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .cornerRadius(8)
+                    .padding(.top, 30)
                 }
-                .padding(.top, 30)
+
+                Text("or")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+
+                NavigationLink(
+                    destination: RegistrationView(settings: settings)
+                        .navigationBarBackButtonHidden(true),
+                    isActive: $isRegister
+                ) {
+                    Button(
+                        action: {
+                            isRegister = true
+                        }
+                    ) {
+                        Text("Sign up")
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .cornerRadius(8)
+                    }
+                }
 
                 Text(loginStatus)
                     .foregroundColor(.white)

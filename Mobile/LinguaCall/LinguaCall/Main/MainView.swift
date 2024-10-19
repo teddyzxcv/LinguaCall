@@ -13,35 +13,33 @@ struct MainView: View {
     @StateObject var viewModel = ChatViewModel(user: User(name: "Pan"))
 
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .leading) {
-                RegistrationView(settings: settings)
+        ZStack(alignment: .leading) {
+            NavigationView {
+                LoginView(settings: settings)
+            }
 
-                VStack {
-                    Spacer()
-                    Spacer()
-                    HStack {
-                        Button(action: {
-                            showDebugMenu.toggle()
-                        }) {
-                            Text("D")
-                                .fontWeight(.bold)
-                                .frame(width: 40, height: 40)
-                                .background(Color.gray.opacity(0.7))
-                                .foregroundColor(.white)
-                                .cornerRadius(5)
-                        }
-                        Spacer() // Spacer to push content to the left
+            VStack {
+                Spacer()
+                Spacer()
+                HStack {
+                    Button(action: {
+                        showDebugMenu.toggle()
+                    }) {
+                        Text("D")
+                            .fontWeight(.bold)
+                            .frame(width: 40, height: 40)
+                            .background(Color.gray.opacity(0.7))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
                     }
-                    Spacer()
+                    Spacer() // Spacer to push content to the left
                 }
-                .edgesIgnoringSafeArea(.all)
-
-
-                .navigationBarTitle("Main Screen", displayMode: .inline)
-                .sheet(isPresented: $showDebugMenu) {
-                    DebugMenuView(settings: settings)
-                }
+                Spacer()
+            }
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarTitle("Main Screen", displayMode: .inline)
+            .sheet(isPresented: $showDebugMenu) {
+                DebugMenuView(settings: settings)
             }
         }
     }

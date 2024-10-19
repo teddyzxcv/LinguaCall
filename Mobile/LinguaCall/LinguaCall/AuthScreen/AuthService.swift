@@ -82,7 +82,7 @@ class AuthService {
 
 // MARK: - User Model
 struct AuthUser: Codable {
-    let id: Int
+    let id: UUID
     let login: String
     let password: String
 }
