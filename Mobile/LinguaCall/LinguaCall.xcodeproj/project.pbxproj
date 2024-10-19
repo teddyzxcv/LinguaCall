@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		155A3D172CBC721900C24EDD /* LinguaCallApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A3D162CBC721900C24EDD /* LinguaCallApp.swift */; };
-		155A3D192CBC721900C24EDD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A3D182CBC721900C24EDD /* ContentView.swift */; };
+		155A3D192CBC721900C24EDD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A3D182CBC721900C24EDD /* MainView.swift */; };
 		155A3D1B2CBC721B00C24EDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155A3D1A2CBC721B00C24EDD /* Assets.xcassets */; };
 		155A3D1E2CBC721B00C24EDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155A3D1D2CBC721B00C24EDD /* Preview Assets.xcassets */; };
 		155A3D282CBC721B00C24EDD /* LinguaCallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A3D272CBC721B00C24EDD /* LinguaCallTests.swift */; };
 		155A3D322CBC721B00C24EDD /* LinguaCallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A3D312CBC721B00C24EDD /* LinguaCallUITests.swift */; };
 		155A3D342CBC721B00C24EDD /* LinguaCallUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155A3D332CBC721B00C24EDD /* LinguaCallUITestsLaunchTests.swift */; };
+		7E22CD612CC3DCC800E579A1 /* ChatScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD602CC3DCC800E579A1 /* ChatScreenViewModel.swift */; };
+		7E22CD642CC3DCE400E579A1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD632CC3DCE400E579A1 /* UserModel.swift */; };
+		7E22CD662CC3DCF400E579A1 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD652CC3DCF400E579A1 /* MessageModel.swift */; };
+		7E22CD692CC3DD1A00E579A1 /* ChatScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		155A3D132CBC721900C24EDD /* LinguaCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		155A3D162CBC721900C24EDD /* LinguaCallApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaCallApp.swift; sourceTree = "<group>"; };
-		155A3D182CBC721900C24EDD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		155A3D182CBC721900C24EDD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		155A3D1A2CBC721B00C24EDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		155A3D1D2CBC721B00C24EDD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		155A3D232CBC721B00C24EDD /* LinguaCallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaCallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +48,10 @@
 		155A3D2D2CBC721B00C24EDD /* LinguaCallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaCallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		155A3D312CBC721B00C24EDD /* LinguaCallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaCallUITests.swift; sourceTree = "<group>"; };
 		155A3D332CBC721B00C24EDD /* LinguaCallUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaCallUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7E22CD602CC3DCC800E579A1 /* ChatScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenViewModel.swift; sourceTree = "<group>"; };
+		7E22CD632CC3DCE400E579A1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		7E22CD652CC3DCF400E579A1 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +102,8 @@
 		155A3D152CBC721900C24EDD /* LinguaCall */ = {
 			isa = PBXGroup;
 			children = (
-				155A3D162CBC721900C24EDD /* LinguaCallApp.swift */,
-				155A3D182CBC721900C24EDD /* ContentView.swift */,
+				7E22CD6A2CC3DD3A00E579A1 /* Main */,
+				7E22CD5F2CC3DCB500E579A1 /* ChatScreen */,
 				155A3D1A2CBC721B00C24EDD /* Assets.xcassets */,
 				155A3D1C2CBC721B00C24EDD /* Preview Content */,
 			);
@@ -125,6 +133,42 @@
 				155A3D332CBC721B00C24EDD /* LinguaCallUITestsLaunchTests.swift */,
 			);
 			path = LinguaCallUITests;
+			sourceTree = "<group>";
+		};
+		7E22CD5F2CC3DCB500E579A1 /* ChatScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7E22CD602CC3DCC800E579A1 /* ChatScreenViewModel.swift */,
+				7E22CD672CC3DD0A00E579A1 /* Views */,
+				7E22CD622CC3DCDD00E579A1 /* Models */,
+			);
+			path = ChatScreen;
+			sourceTree = "<group>";
+		};
+		7E22CD622CC3DCDD00E579A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E22CD632CC3DCE400E579A1 /* UserModel.swift */,
+				7E22CD652CC3DCF400E579A1 /* MessageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7E22CD672CC3DD0A00E579A1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E22CD6A2CC3DD3A00E579A1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				155A3D182CBC721900C24EDD /* MainView.swift */,
+				155A3D162CBC721900C24EDD /* LinguaCallApp.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				155A3D192CBC721900C24EDD /* ContentView.swift in Sources */,
+				7E22CD692CC3DD1A00E579A1 /* ChatScreenView.swift in Sources */,
+				7E22CD662CC3DCF400E579A1 /* MessageModel.swift in Sources */,
+				7E22CD612CC3DCC800E579A1 /* ChatScreenViewModel.swift in Sources */,
+				155A3D192CBC721900C24EDD /* MainView.swift in Sources */,
+				7E22CD642CC3DCE400E579A1 /* UserModel.swift in Sources */,
 				155A3D172CBC721900C24EDD /* LinguaCallApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

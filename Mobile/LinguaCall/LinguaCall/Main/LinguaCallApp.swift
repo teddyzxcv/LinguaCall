@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct LinguaCallApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+struct lingua_callApp: App {
+  var body: some Scene {
+    WindowGroup {
+      MainView()
     }
+  }
 }
