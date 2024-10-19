@@ -8,11 +8,47 @@
 import SwiftUI
 
 struct MainView: View {
-  @StateObject var viewModel = ChatViewModel(user: User(name: "Pan"))
-  
-  var body: some View {
-    NavigationView {
-      ChatScreenView(viewModel: viewModel)
+    @State private var showDebugMenu = false
+    @ObservedObject var settings = DebugSettings()
+    @StateObject var viewModel = ChatViewModel(user: User(name: "Pan"))
+
+    var body: some View {
+        NavigationView {
+            ZStack(alignment: .leading) {
+                RegistrationView(settings: settings)
+
+                VStack {
+                    Spacer()
+                    Spacer()
+                    HStack {
+                        Button(action: {
+                            showDebugMenu.toggle()
+                        }) {
+                            Text("D")
+                                .fontWeight(.bold)
+                                .frame(width: 40, height: 40)
+                                .background(Color.gray.opacity(0.7))
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                        }
+                        Spacer() // Spacer to push content to the left
+                    }
+                    Spacer()
+                }
+                .edgesIgnoringSafeArea(.all)
+
+
+                .navigationBarTitle("Main Screen", displayMode: .inline)
+                .sheet(isPresented: $showDebugMenu) {
+                    DebugMenuView(settings: settings)
+                }
+            }
+        }
     }
-  }
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
+    }
 }
