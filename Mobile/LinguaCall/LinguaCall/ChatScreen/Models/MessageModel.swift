@@ -11,4 +11,11 @@ struct MessageModel: Identifiable {
   let id = UUID()
   let content: String
   let isSentByCurrentUser: Bool
+  let audioURL: URL?
+  
+  init(content: String, isSentByCurrentUser: Bool, audioURL: URL? = nil) {
+    self.content = content
+    self.isSentByCurrentUser = isSentByCurrentUser
+    self.audioURL = audioURL
+  }
 }
