@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ChatScreenView: View {
   @ObservedObject var viewModel: ChatViewModel
+  @ObservedObject var speechRecognizer = SpeechRecognizer()
   @State private var isAnimating = false
+  @State private var isTextEditedManually = false
+  @State private var manualText = ""
   
   var body: some View {
     VStack {
@@ -39,7 +42,7 @@ struct ChatScreenView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
-    
+                    
                     Text("Голосовое сообщение")
                       .foregroundColor(.white)
                   }
@@ -66,7 +69,7 @@ struct ChatScreenView: View {
                         .foregroundColor(.black)
                         .cornerRadius(10)
                     }
-
+                    
                     Text("Голосовое сообщение")
                       .foregroundColor(.black)
                   }
@@ -86,47 +89,93 @@ struct ChatScreenView: View {
         }
       }
       
-      HStack {
-        Button(action: {
-          if viewModel.isRecording {
-            viewModel.stopRecording()
-          } else {
-            viewModel.startRecording()
-          }
-        }) {
-          Image(systemName: viewModel.isRecording ? "stop.circle.fill" : "mic.fill")
-            .font(.system(size: 24))
-            .padding()
-            .background(viewModel.isRecording ? Color.red : Color.blue)
-            .foregroundColor(.white)
-            .clipShape(Circle())
-            .scaleEffect(isAnimating ? 1.2 : 1.0)
-            .onAppear {
-              if viewModel.isRecording {
-                withAnimation(Animation.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
-                  isAnimating = true
+      VStack {
+        ScrollViewReader { proxy in
+          ScrollView {
+            VStack {
+              TextEditor(text: $speechRecognizer.recognizedText)
+                .font(.body)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(.leading)
+                .id("RecognizedText")
+                .onChange(of: speechRecognizer.recognizedText) { _ in
+                  if !isTextEditedManually {
+                    withAnimation {
+                      proxy.scrollTo("RecognizedText", anchor: .bottom)
+                    }
+                  }
                 }
-              } else {
-                isAnimating = false
-              }
+                .onTapGesture {
+                  isTextEditedManually = true
+                }
             }
+          }
+          .frame(height: 100)
         }
-        .padding()
         
-        Button(action: {
-          viewModel.startCall()
-        }) {
-          Image(systemName: "phone.fill")
-            .font(.system(size: 24))
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .clipShape(Circle())
+        HStack {
+          Button(action: {
+            if self.speechRecognizer.isRunning {
+              self.speechRecognizer.stop()
+              
+              let newMessage = MessageModel(content: speechRecognizer.recognizedText, isSentByCurrentUser: true)
+              viewModel.messages.append(newMessage)
+              
+              speechRecognizer.recognizedText = ""
+            } else {
+              self.speechRecognizer.start()
+            }
+          }) {
+            Image(systemName: self.speechRecognizer.isRunning ? "stop.fill" : "play.fill")
+              .font(.system(size: 24))
+              .padding()
+              .background(self.speechRecognizer.isRunning ? Color.red : Color.green)
+              .foregroundColor(.white)
+              .clipShape(Circle())
+          }
+          .padding()
+
+          Button(action: {
+            if viewModel.isRecording {
+              viewModel.stopRecording()
+            } else {
+              viewModel.startRecording()
+            }
+          }) {
+            Image(systemName: viewModel.isRecording ? "stop.fill" : "mic.fill")
+              .font(.system(size: 24))
+              .padding()
+              .background(viewModel.isRecording ? Color.red : Color.blue)
+              .foregroundColor(.white)
+              .clipShape(Circle())
+              .scaleEffect(isAnimating ? 1.2 : 1.0)
+              .onAppear {
+                if viewModel.isRecording {
+                  withAnimation(Animation.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
+                    isAnimating = true
+                  }
+                } else {
+                  isAnimating = false
+                }
+              }
+          }
+          .padding()
+          
+          Button(action: {
+            viewModel.startCall()
+          }) {
+            Image(systemName: "phone.fill")
+              .font(.system(size: 24))
+              .padding()
+              .background(Color.blue)
+              .foregroundColor(.white)
+              .clipShape(Circle())
+          }
+          .padding()
         }
-        .padding()
       }
     }
     .padding()
   }
 }
-
