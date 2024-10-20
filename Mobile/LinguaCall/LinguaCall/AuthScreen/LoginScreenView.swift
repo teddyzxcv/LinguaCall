@@ -68,8 +68,9 @@ struct LoginView: View {
                 .padding()
                 .ignoresSafeArea(.keyboard)
 
+                // После успешного входа направляем на ChatListView
                 NavigationLink(
-                    destination: ChatScreenView(viewModel: ChatViewModel(user: User(name: email)))
+                    destination: ChatListView(context: CoreDataStack.shared.context)
                         .navigationBarBackButtonHidden(true),
                     isActive: $isLogin
                 ) {
@@ -77,6 +78,8 @@ struct LoginView: View {
                         authService.loginUser(login: email, password: password) { result in
                             switch result {
                             case .success(let message):
+                              UserInfo.login = email
+                              UserInfo.password = password
                                 loginStatus = message
                                 isLogin = true
                             case .failure(let error):
@@ -142,13 +145,8 @@ struct LoginView: View {
             return "Invalid login or password."
         case .unknownError:
             return "An unknown error occurred."
+        case .decodingError:
+          return "Error with decoding"
         }
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(settings: DebugSettings())
-            .previewDevice("iPhone 11 Pro")
     }
 }

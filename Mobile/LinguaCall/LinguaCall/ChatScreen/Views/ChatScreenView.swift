@@ -18,13 +18,13 @@ struct ChatScreenView: View {
 
     var body: some View {
         VStack {
-            TextField("Имя пользователя", text: $viewModel.user.name, onCommit: {
-                viewModel.saveUserName()
-            })
-            .font(.title)
-            .padding()
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(8)
+          TextField("Имя пользователя", text: $viewModel.user.login, onCommit: {
+              viewModel.saveUserName()
+          })
+          .font(.title)
+          .padding()
+          .background(Color.gray.opacity(0.1))
+          .cornerRadius(8)
 
             ScrollView {
                 VStack {
@@ -178,6 +178,7 @@ struct ChatScreenView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .padding()
     }
 }

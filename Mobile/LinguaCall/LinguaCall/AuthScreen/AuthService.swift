@@ -78,6 +78,46 @@ class AuthService {
             }
         }.resume()
     }
+  
+  // MARK: - Check if User Exists
+  func checkIfUserExists(interlocutorLogin: String, completion: @escaping (Result<Bool, AuthError>) -> Void) {
+    guard let url = URL(string: "\(settings.baseURL)/user/login/exist") else {
+      completion(.failure(.invalidURL))
+      return
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    // JSON body with login
+    let body: [String: Any] = ["login": interlocutorLogin]
+    request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+    
+    URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        completion(.failure(.requestFailed(error.localizedDescription)))
+        return
+      }
+      
+      guard let data = data, let response = response as? HTTPURLResponse else {
+        completion(.failure(.unknownError))
+        return
+      }
+      
+      switch response.statusCode {
+      case 200:
+        // Expecting "true" or "false" in response body
+        if let result = try? JSONDecoder().decode(Bool.self, from: data) {
+          completion(.success(result))
+        } else {
+          completion(.failure(.decodingError))
+        }
+      default:
+        completion(.failure(.unknownError))
+      }
+    }.resume()
+  }
 }
 
 // MARK: - User Model
@@ -95,4 +135,5 @@ enum AuthError: Error {
     case userAlreadyExists
     case invalidCredentials
     case unknownError
+  case decodingError
 }

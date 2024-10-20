@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct lingua_callApp: App {
+  let persistenceController = CoreDataStack.shared
+
   var body: some Scene {
     WindowGroup {
       MainView()
+        .environment(\.managedObjectContext, persistenceController.context) // передаем контекст в окружение
     }
   }
 }

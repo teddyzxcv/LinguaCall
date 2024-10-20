@@ -24,7 +24,15 @@
 		7E22CD642CC3DCE400E579A1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD632CC3DCE400E579A1 /* UserModel.swift */; };
 		7E22CD662CC3DCF400E579A1 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD652CC3DCF400E579A1 /* MessageModel.swift */; };
 		7E22CD692CC3DD1A00E579A1 /* ChatScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */; };
+		7E2381882CCFB95A00749019 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2381872CCFB95A00749019 /* UserInfo.swift */; };
 		7E56AD722CC52FB8004FF66A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD712CC52FB8004FF66A /* SpeechRecognizer.swift */; };
+		7E56AD782CC58C15004FF66A /* ChatsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD772CC58C15004FF66A /* ChatsListViewModel.swift */; };
+		7E56AD7D2CC5916F004FF66A /* ChatRepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD7C2CC5916F004FF66A /* ChatRepositoryService.swift */; };
+		7E56AD7F2CC591CF004FF66A /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD7E2CC591CF004FF66A /* ChatListView.swift */; };
+		7E56AD812CC5951A004FF66A /* NewChatSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD802CC5951A004FF66A /* NewChatSheetView.swift */; };
+		7EB4107E2CC9927800A237E1 /* ChatModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB4107C2CC9927800A237E1 /* ChatModel+CoreDataProperties.swift */; };
+		7EBE191C2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE191A2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodeld */; };
+		7EBE19222CC98EDF0055ECC1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE19212CC98EDF0055ECC1 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +74,15 @@
 		7E22CD632CC3DCE400E579A1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7E22CD652CC3DCF400E579A1 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenView.swift; sourceTree = "<group>"; };
+		7E2381872CCFB95A00749019 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		7E56AD712CC52FB8004FF66A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		7E56AD772CC58C15004FF66A /* ChatsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListViewModel.swift; sourceTree = "<group>"; };
+		7E56AD7C2CC5916F004FF66A /* ChatRepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryService.swift; sourceTree = "<group>"; };
+		7E56AD7E2CC591CF004FF66A /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		7E56AD802CC5951A004FF66A /* NewChatSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatSheetView.swift; sourceTree = "<group>"; };
+		7EB4107C2CC9927800A237E1 /* ChatModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7EBE191B2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataFile.xcdatamodel; sourceTree = "<group>"; };
+		7EBE19212CC98EDF0055ECC1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,13 +151,17 @@
 		155A3D152CBC721900C24EDD /* LinguaCall */ = {
 			isa = PBXGroup;
 			children = (
+				7E2381862CCFB94200749019 /* UserInfo */,
+				7E2381852CCFB8DD00749019 /* ChatsService */,
 				15D154122CC7FFDB008ADA56 /* TextToSpeechService */,
-				7E56AD6E2CC52F67004FF66A /* SpeechToTextService */,
-				1548333F2CC40CEF00F0A536 /* Info.plist */,
-				1548333E2CC407F800F0A536 /* DebugMenuView */,
-				154833352CC404BF00F0A536 /* AuthScreen */,
-				7E22CD6A2CC3DD3A00E579A1 /* Main */,
 				7E22CD5F2CC3DCB500E579A1 /* ChatScreen */,
+				7E56AD7B2CC59153004FF66A /* CoreData */,
+				7E22CD6A2CC3DD3A00E579A1 /* Main */,
+				154833352CC404BF00F0A536 /* AuthScreen */,
+				7E56AD742CC58BD4004FF66A /* ChatsScreen */,
+				7E56AD6E2CC52F67004FF66A /* SpeechToTextService */,
+				1548333E2CC407F800F0A536 /* DebugMenuView */,
+				1548333F2CC40CEF00F0A536 /* Info.plist */,
 				155A3D1A2CBC721B00C24EDD /* Assets.xcassets */,
 				155A3D1C2CBC721B00C24EDD /* Preview Content */,
 				15D154152CC800BD008ADA56 /* LocaleIdentifier.swift */,
@@ -218,12 +238,72 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		7E2381852CCFB8DD00749019 /* ChatsService */ = {
+			isa = PBXGroup;
+			children = (
+				7E56AD7C2CC5916F004FF66A /* ChatRepositoryService.swift */,
+			);
+			path = ChatsService;
+			sourceTree = "<group>";
+		};
+		7E2381862CCFB94200749019 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				7E2381872CCFB95A00749019 /* UserInfo.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
 		7E56AD6E2CC52F67004FF66A /* SpeechToTextService */ = {
 			isa = PBXGroup;
 			children = (
 				7E56AD712CC52FB8004FF66A /* SpeechRecognizer.swift */,
 			);
 			path = SpeechToTextService;
+			sourceTree = "<group>";
+		};
+		7E56AD742CC58BD4004FF66A /* ChatsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7E56AD772CC58C15004FF66A /* ChatsListViewModel.swift */,
+				7E56AD762CC58C07004FF66A /* Views */,
+				7E56AD752CC58C03004FF66A /* Models */,
+			);
+			path = ChatsScreen;
+			sourceTree = "<group>";
+		};
+		7E56AD752CC58C03004FF66A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7E56AD762CC58C07004FF66A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E56AD7E2CC591CF004FF66A /* ChatListView.swift */,
+				7E56AD802CC5951A004FF66A /* NewChatSheetView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7E56AD7B2CC59153004FF66A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7EBE191A2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodeld */,
+				7EB4107F2CC9929200A237E1 /* Models */,
+				7EBE19212CC98EDF0055ECC1 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7EB4107F2CC9929200A237E1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7EB4107C2CC9927800A237E1 /* ChatModel+CoreDataProperties.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,18 +437,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				154833372CC4054400F0A536 /* RegisterScreenView.swift in Sources */,
+				7E56AD7F2CC591CF004FF66A /* ChatListView.swift in Sources */,
+				7E56AD7D2CC5916F004FF66A /* ChatRepositoryService.swift in Sources */,
 				7E22CD692CC3DD1A00E579A1 /* ChatScreenView.swift in Sources */,
 				7E22CD662CC3DCF400E579A1 /* MessageModel.swift in Sources */,
 				7E22CD612CC3DCC800E579A1 /* ChatScreenViewModel.swift in Sources */,
 				155A3D192CBC721900C24EDD /* MainView.swift in Sources */,
 				7E56AD722CC52FB8004FF66A /* SpeechRecognizer.swift in Sources */,
+				7EB4107E2CC9927800A237E1 /* ChatModel+CoreDataProperties.swift in Sources */,
+				7EBE19222CC98EDF0055ECC1 /* CoreDataStack.swift in Sources */,
 				7E22CD642CC3DCE400E579A1 /* UserModel.swift in Sources */,
+				7EBE191C2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodeld in Sources */,
 				1548333D2CC407F100F0A536 /* DebugMenu.swift in Sources */,
+				7E56AD782CC58C15004FF66A /* ChatsListViewModel.swift in Sources */,
 				155A3D172CBC721900C24EDD /* LinguaCallApp.swift in Sources */,
 				15D154142CC7FFF9008ADA56 /* TextVoiceOver.swift in Sources */,
 				15D154162CC800BD008ADA56 /* LocaleIdentifier.swift in Sources */,
 				1548333B2CC4069A00F0A536 /* LoginScreenView.swift in Sources */,
 				154833392CC4067000F0A536 /* AuthService.swift in Sources */,
+				7E2381882CCFB95A00749019 /* UserInfo.swift in Sources */,
+				7E56AD812CC5951A004FF66A /* NewChatSheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +635,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -717,6 +805,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7EBE191A2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7EBE191B2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodel */,
+			);
+			currentVersion = 7EBE191B2CC98D6C0055ECC1 /* CoreDataFile.xcdatamodel */;
+			path = CoreDataFile.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 155A3D0B2CBC721900C24EDD /* Project object */;
 }
