@@ -9,10 +9,10 @@ import Foundation
 
 class User {
   var id: UUID
-  var name: String
+  var login: String
   
-  init(name: String) {
+  init(login: String) {
     self.id = UUID() 
-    self.name = name
+    self.login = login
   }
 }

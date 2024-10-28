@@ -70,7 +70,7 @@ struct RegistrationView: View {
                 .ignoresSafeArea(.keyboard)
 
                 NavigationLink(
-                    destination: ChatScreenView(viewModel: ChatViewModel(user: User(name: email)))
+                    destination: ChatListView(context: CoreDataStack.shared.context)
                         .navigationBarBackButtonHidden(true),
                     isActive: $isRegistered
                 ) {
@@ -78,6 +78,8 @@ struct RegistrationView: View {
                         authService.registerUser(login: email, password: password) { result in
                             switch result {
                             case .success(let user):
+                              UserInfo.login = email
+                              UserInfo.password = password
                                 email = user.login
                                 registrationStatus = "Registration successful!"
                                 isRegistered = true
@@ -120,6 +122,8 @@ struct RegistrationView: View {
             return "Invalid login or password."
         case .unknownError:
             return "An unknown error occurred."
+        case .decodingError:
+          return "Error with decoding"
         }
     }
 }
