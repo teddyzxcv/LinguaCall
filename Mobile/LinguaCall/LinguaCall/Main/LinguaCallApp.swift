@@ -14,7 +14,7 @@ struct lingua_callApp: App {
   var body: some Scene {
     WindowGroup {
       MainView()
-        .environment(\.managedObjectContext, persistenceController.context) // передаем контекст в окружение
+        .environment(\.managedObjectContext, persistenceController.context)
     }
   }
 }
