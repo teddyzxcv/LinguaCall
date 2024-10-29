@@ -11,14 +11,17 @@ struct NewChatSheetView: View {
   @Binding var userLoginToFind: String
   @Binding var isUserFound: Bool?
   var onFindUser: (String) -> Void
-  
+
   var body: some View {
     VStack {
       Spacer()
       
       TextField("Введите логин пользователя", text: $userLoginToFind)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
+        .background(Color.gray.opacity(0.2))
+        .foregroundColor(.white)
+        .cornerRadius(8)
+        .padding(.horizontal, 16) // Отступы от краев
       
       if let isUserFound = isUserFound {
         Text(isUserFound ? "Пользователь найден" : "Пользователь не найден")
@@ -37,9 +40,11 @@ struct NewChatSheetView: View {
           .background(Color.blue)
           .foregroundColor(.white)
           .cornerRadius(8)
-          .padding(.horizontal)
+          .padding(.horizontal, 16)
       }
     }
     .padding()
+    .background(Color.black.ignoresSafeArea()) // Фон для всего экрана
   }
 }
+
