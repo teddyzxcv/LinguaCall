@@ -25,6 +25,7 @@
 		7E22CD662CC3DCF400E579A1 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD652CC3DCF400E579A1 /* MessageModel.swift */; };
 		7E22CD692CC3DD1A00E579A1 /* ChatScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */; };
 		7E2381882CCFB95A00749019 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2381872CCFB95A00749019 /* UserInfo.swift */; };
+		7E23818B2CCFD20000749019 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E23818A2CCFD20000749019 /* ChatService.swift */; };
 		7E56AD722CC52FB8004FF66A /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD712CC52FB8004FF66A /* SpeechRecognizer.swift */; };
 		7E56AD782CC58C15004FF66A /* ChatsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD772CC58C15004FF66A /* ChatsListViewModel.swift */; };
 		7E56AD7D2CC5916F004FF66A /* ChatRepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E56AD7C2CC5916F004FF66A /* ChatRepositoryService.swift */; };
@@ -75,6 +76,7 @@
 		7E22CD652CC3DCF400E579A1 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		7E22CD682CC3DD1A00E579A1 /* ChatScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenView.swift; sourceTree = "<group>"; };
 		7E2381872CCFB95A00749019 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		7E23818A2CCFD20000749019 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		7E56AD712CC52FB8004FF66A /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		7E56AD772CC58C15004FF66A /* ChatsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListViewModel.swift; sourceTree = "<group>"; };
 		7E56AD7C2CC5916F004FF66A /* ChatRepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryService.swift; sourceTree = "<group>"; };
@@ -152,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				7E2381862CCFB94200749019 /* UserInfo */,
-				7E2381852CCFB8DD00749019 /* ChatsService */,
 				15D154122CC7FFDB008ADA56 /* TextToSpeechService */,
 				7E22CD5F2CC3DCB500E579A1 /* ChatScreen */,
 				7E56AD7B2CC59153004FF66A /* CoreData */,
@@ -205,6 +206,7 @@
 		7E22CD5F2CC3DCB500E579A1 /* ChatScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7E2381892CCFD1C500749019 /* Services */,
 				7E22CD602CC3DCC800E579A1 /* ChatScreenViewModel.swift */,
 				7E22CD672CC3DD0A00E579A1 /* Views */,
 				7E22CD622CC3DCDD00E579A1 /* Models */,
@@ -254,6 +256,14 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
+		7E2381892CCFD1C500749019 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7E23818A2CCFD20000749019 /* ChatService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		7E56AD6E2CC52F67004FF66A /* SpeechToTextService */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +275,7 @@
 		7E56AD742CC58BD4004FF66A /* ChatsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7E2381852CCFB8DD00749019 /* ChatsService */,
 				7E56AD772CC58C15004FF66A /* ChatsListViewModel.swift */,
 				7E56AD762CC58C07004FF66A /* Views */,
 				7E56AD752CC58C03004FF66A /* Models */,
@@ -457,6 +468,7 @@
 				154833392CC4067000F0A536 /* AuthService.swift in Sources */,
 				7E2381882CCFB95A00749019 /* UserInfo.swift in Sources */,
 				7E56AD812CC5951A004FF66A /* NewChatSheetView.swift in Sources */,
+				7E23818B2CCFD20000749019 /* ChatService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

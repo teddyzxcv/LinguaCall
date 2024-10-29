@@ -24,7 +24,16 @@ struct ChatListView: View {
     NavigationView {
       List {
         ForEach(self.viewModel.chats, id: \.self) { chat in
-          NavigationLink(destination: ChatScreenView(viewModel: ChatViewModel(user: User(login: chat.interlocutorLogin ?? "Empty interlocutorLogin")))) {
+          NavigationLink(
+            destination: ChatScreenView(
+              viewModel: 
+                ChatViewModel(
+                  interlocutorUser: User(login: chat.interlocutorLogin ?? "Empty chat.interlocutorLogin"),
+                  chatID: chat.id ?? UUID(),
+                  settings: DebugSettings()
+                )
+            )
+          ) {
             VStack(alignment: .leading) {
               Text(chat.interlocutorLogin ?? "Empty Locutor Login")
                 .font(.headline)
@@ -36,7 +45,7 @@ struct ChatListView: View {
         }
       }
       .navigationBarTitleDisplayMode(.inline)
-      .navigationTitle("Чаты")
+      .navigationTitle("")
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(action: {

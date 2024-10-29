@@ -18,6 +18,7 @@ class ChatListViewModel: ObservableObject {
   }
   
   func loadChats(userLogin: String) {
+//    chatRepositoryService.deleteAllChats()
     DispatchQueue.global(qos: .userInitiated).async {
       let fetchedChats = self.chatRepositoryService.getChats(userLogin: userLogin)
       DispatchQueue.main.async {
@@ -33,7 +34,7 @@ class ChatListViewModel: ObservableObject {
     newChat.title = interlocutorLogin
     newChat.interlocutorLogin = interlocutorLogin
     newChat.userLogin = UserInfo.login
-    newChat.lastMessage = "Start dialog! 😉"
+    newChat.lastMessage = "Tap to open dialog! 😉"
     
     do {
       try chatRepositoryService.context.save()
