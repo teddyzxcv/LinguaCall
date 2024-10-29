@@ -80,8 +80,10 @@ struct LoginView: View {
                             case .success(let message):
                               UserInfo.login = email
                               UserInfo.password = password
-                                loginStatus = message
+//                                loginStatus = message
                                 isLogin = true
+                              email = ""
+                              password = ""
                             case .failure(let error):
                                 loginStatus = handleAuthError(error)
                             }

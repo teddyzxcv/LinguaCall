@@ -12,8 +12,7 @@ struct ChatListView: View {
   @StateObject private var viewModel: ChatListViewModel
   @State private var userLoginToFind: String = ""
   @State private var isUserFound: Bool? = nil
-  
-  private let authService = AuthService(settings: DebugSettings())
+  @Environment(\.presentationMode) private var presentationMode
   
   init(context: NSManagedObjectContext) {
     let repository = ChatRepositoryService(context: context)
@@ -26,7 +25,7 @@ struct ChatListView: View {
         ForEach(self.viewModel.chats, id: \.self) { chat in
           NavigationLink(
             destination: ChatScreenView(
-              viewModel: 
+              viewModel:
                 ChatViewModel(
                   interlocutorUser: User(login: chat.interlocutorLogin ?? "Empty chat.interlocutorLogin"),
                   chatID: chat.id ?? UUID(),
@@ -47,6 +46,15 @@ struct ChatListView: View {
       .navigationBarTitleDisplayMode(.inline)
       .navigationTitle("")
       .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button(action: {
+            logOut()
+          }) {
+            Image(systemName: "arrow.backward.circle")
+              .font(.title2)
+          }
+        }
+        
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(action: {
             viewModel.isShowingNewChatSheet = true
@@ -62,7 +70,7 @@ struct ChatListView: View {
     }
     .sheet(isPresented: $viewModel.isShowingNewChatSheet) {
       NewChatSheetView(userLoginToFind: $userLoginToFind, isUserFound: $isUserFound) { interlocutorLogin in
-        authService.checkIfUserExists(interlocutorLogin: interlocutorLogin) { result in
+        viewModel.authService.checkIfUserExists(interlocutorLogin: interlocutorLogin) { result in
           DispatchQueue.main.async {
             switch result {
             case .success(let userFound):
@@ -79,5 +87,11 @@ struct ChatListView: View {
         }
       }
     }
+  }
+  
+  private func logOut() {
+    UserInfo.login = nil
+    UserInfo.password = nil
+    presentationMode.wrappedValue.dismiss()
   }
 }
