@@ -118,6 +118,41 @@ class AuthService {
       }
     }.resume()
   }
+  
+  // MARK: - Get Chat ID
+  func getChatId(login1: String, login2: String, completion: @escaping (Result<String?, AuthError>) -> Void) {
+    guard let url = URL(string: "\(settings.baseURL)/user/getChatId?login1=\(login1)&login2=\(login2)") else {
+      completion(.failure(.invalidURL))
+      return
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        completion(.failure(.requestFailed(error.localizedDescription)))
+        return
+      }
+      
+      guard let data = data, let response = response as? HTTPURLResponse else {
+        completion(.failure(.unknownError))
+        return
+      }
+      
+      switch response.statusCode {
+      case 200:
+        if let chatId = String(data: data, encoding: .utf8), !chatId.isEmpty {
+          completion(.success(chatId))
+        } else {
+          completion(.success(nil)) // Чат не существует
+        }
+      default:
+        completion(.failure(.unknownError))
+      }
+    }.resume()
+  }
 }
 
 // MARK: - User Model
